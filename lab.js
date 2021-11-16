@@ -406,14 +406,24 @@ console.log(helensInfo)
 */
 
 //Code Here 
-
+class Vehicle{
+  constructor(capacity, color, mileage){
+    this.capacity = capacity
+    this.color = color
+    this.mileage = mileage
+  }
+  move(miles){
+    let sumOfMiles = this.mileage + miles
+    console.log(sumOfMiles)
+  }
+}
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
-
+const myFirstVehicle = new Vehicle(5, 'black', 109000)
 
 /* 
   Now we'll create a class that's based off of the vehicle class. 
@@ -424,17 +434,24 @@ console.log(helensInfo)
 */
 
 //Code Here
+class Motorcycle extends Vehicle{
+  constructor(capacity, color, mileage, make, isCool){
+  super(capacity, color, mileage)
+  this.make = make
+  this.isCool = isCool
 
+  }
+}
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
-
+const myFirstMotorcycle = new Motorcycle(1, 'black', 15000, 'honda', true)
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
 */
-
+myFirstMotorcycle.move(5000)
 /*
   Let's make another class based off of Vehicle. 
 
@@ -452,29 +469,48 @@ console.log(helensInfo)
 */
 
 //Code Here
+class Boat extends Vehicle{
+  constructor(capacity, color, mileage, name, type, isSeaWorthy){
+  super(capacity, color, mileage)
+  this.name = name
+  this.type = type
+  this.isSeaWorthy = isSeaWorthy
+  }
 
+  checkSeaworthiness(){
+    if(this.isSeaWorthy === true){
+      console.log(`The ${this.color} ${this.type} ${this.name} is seaworthy!`)
+    }else{
+      console.log(`You need to get your ${this.type} in shape!`)
+    }
 
+  }
+  performanceMaintenence(){
+    this.isSeaWorthy = true
+  }
+}
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
   properties except isSeaworthy -- make that one false. Call your variable myFirstBoat.
 */
 
 //Code Here
-
+const newBoat = new Boat(100, 'white', 52052, 'The Flying Dutchmen', 'yacht', false)
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
-
+newBoat.checkSeaworthiness()
 /*
   Now run the performMaintenance method on your boat
 */
 
 //Code Here 
-
+newBoat.performanceMaintenence()
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+newBoat.checkSeaworthiness()
